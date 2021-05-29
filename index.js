@@ -40,7 +40,7 @@ client.connect((err) => {
       to: "rishadkhan190@gmail.com",
       subject: "Sending Email using Node.js",
 
-      html: `<h1>${total[0]._id} </h1> <p>${total[0].name}</p> <p>${total[0].phone}</p> <p>${total[0].email}</p> <p>${total[0].email}</p>
+      html: `<h1>${total[0]._id} </h1> <p>${total[0].name}</p> <p>${total[0].phone}</p> <p>${total[0].email}</p> <p>${total[0].hobbies}</p>
       </br>
       
       `,
