@@ -16,14 +16,13 @@ const port = 5000;
 
 var nodemailer = require("nodemailer");
 
-// var transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     user: "rishadkhan202119@gmail.com",
-//
-//   },
-// });
-
+var transporter = nodemailer.createTransport({
+  service: "hotmail",
+  auth: {
+    user: "nodejs202119@outlook.com",
+    pass: `${process.env.EMAIL_PASSWORD}`,
+  },
+});
 client.connect((err) => {
   const collection = client.db("hobbies").collection("userData");
   // perform actions on the collection object
@@ -32,7 +31,29 @@ client.connect((err) => {
       res.send(doc);
     });
   });
-  app.get("/sendMail", (req, res) => {
+  app.post("/sendMail", (req, res) => {
+    const total = req.body;
+
+    var mailOptions = {
+      from: "nodejs202119@outlook.com",
+      to: "rishadkhan190@gmail.com",
+      subject: "Sending Email using Node.js",
+
+      html: `<h1>${total[0]._id}</h1> <p>${total[0].name}</p> <p>${total[0].phone}</p> <p>${total[0].email}</p> <p>${total[0].hobbies}</p>
+      </br>
+      <h1>${total[1]._id}</h1> <p>${total[1].name}</p> <p>${total[1].phone}</p> <p>${total[1].email}</p> <p>${total[1].hobbies}</p>
+      </br>
+      <h1>${total[2]._id}</h1> <p>${total[2].name}</p> <p>${total[2].phone}</p> <p>${total[2].email}</p> <p>${total[2].hobbies}</p>
+
+      `,
+    };
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
     console.log(req.body);
   });
   app.get("/updateUser/:id", (req, res) => {
