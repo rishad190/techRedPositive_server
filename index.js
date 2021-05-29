@@ -44,8 +44,6 @@ client.connect((err) => {
       </br>
       <h1>${total[1]._id} </h1> <p>${total[1].name}</p> <p>${total[1].phone}</p> <p>${total[1].email}</p> <p>${total[1].hobbies}</p>
       </br>
-      <h1>${total[2]._id} </h1> <p>${total[2].name}</p> <p>${total[2].phone}</p> <p>${total[2].email}</p> <p>${total[2].hobbies}</p>
-      </br>
       
       `,
     };
