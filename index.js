@@ -37,7 +37,7 @@ client.connect((err) => {
 
     var mailOptions = {
       from: "nodejs202119@outlook.com",
-      to: "rishadkhan190@gmail.com",
+      to: "info@redpositive.in",
       subject: "Sending Email using Node.js",
 
       html: `<h1>${total[0]._id} </h1> <p>${total[0].name}</p> <p>${total[0].phone}</p> <p>${total[0].email}</p> <p>${total[0].hobbies}</p>
