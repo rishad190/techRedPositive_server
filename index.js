@@ -20,7 +20,7 @@ var transporter = nodemailer.createTransport({
   service: "hotmail",
   auth: {
     user: "nodejs202119@outlook.com",
-    pass: `${process.env.EMAIL_PASSWORD}`,
+    pass: "01775984147a",
   },
 });
 client.connect((err) => {
@@ -31,6 +31,7 @@ client.connect((err) => {
       res.send(doc);
     });
   });
+
   app.post("/sendMail", (req, res) => {
     const total = req.body;
 
@@ -39,12 +40,9 @@ client.connect((err) => {
       to: "rishadkhan190@gmail.com",
       subject: "Sending Email using Node.js",
 
-      html: `<h1>${total[0]._id}</h1> <p>${total[0].name}</p> <p>${total[0].phone}</p> <p>${total[0].email}</p> <p>${total[0].hobbies}</p>
+      html: `<h1>${total[0]._id} </h1> <p>${total[0].name}</p> <p>${total[0].phone}</p> <p>${total[0].email}</p> <p>${total[0].email}</p>
       </br>
-      <h1>${total[1]._id}</h1> <p>${total[1].name}</p> <p>${total[1].phone}</p> <p>${total[1].email}</p> <p>${total[1].hobbies}</p>
-      </br>
-      <h1>${total[2]._id}</h1> <p>${total[2].name}</p> <p>${total[2].phone}</p> <p>${total[2].email}</p> <p>${total[2].hobbies}</p>
-
+      
       `,
     };
     transporter.sendMail(mailOptions, function (error, info) {
